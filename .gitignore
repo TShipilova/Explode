@@ -1,0 +1,15 @@
+*.pyc
+gmon.out
+*.o
+a.out
+*~
+build
+.kdev4
+\#*
+*.eps
+*.jpg
+*.out
+/Java/nbproject/private/
+*.class
+*.tc*.orgi
+*.orig
