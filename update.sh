@@ -6,5 +6,5 @@ git commit  -a
 #else
  #   echo Connected
 #fi
-git pull origin trunk
-git push origin trunk
+git pull origin master
+git push origin master
