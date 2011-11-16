@@ -5,24 +5,26 @@
 # think. ~illusionoflife
 
 
-class Mover(object):
+class Walker(object):
 
     def __init__(self):
         pass
 
     # Have no idea how implement it.
+    # Now I have. But I very lazy. Sorry. Have a nice holydays
 
     def speed(self):
-        return 1
+        return 1 << 11
 
-    def factorSpeed(self, factor, time=0):
-        """No idea how. Time =0 means forever. Some limit required """
-        pass
     def exploded(self):
-        pass
+        raise NotImplementedError
+    
     def canPassWall(self):
         """Not exited with this idea, but...
         what else?"""
-        return False
 
+        return False
+    def canPassBomb(self):
+        return False
+    
 
