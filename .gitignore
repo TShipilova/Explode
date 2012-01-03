@@ -13,3 +13,13 @@ build
 *.class
 *.tc*.orgi
 *.orig
+autom4te.cache
+autom4te.cache/*
+*.in
+configure
+aclocal.m4
+extern
+*.info
+latex
+html
+*.d

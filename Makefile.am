@@ -1,1 +1,1 @@
-SUBDIRS=src doc contrib check
+SUBDIRS=src doc contrib

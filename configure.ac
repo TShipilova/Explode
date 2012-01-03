@@ -9,10 +9,7 @@ AC_PROG_RANLIB
 AC_CONFIG_FILES([Makefile
                                         src/Makefile
                                         doc/Makefile
-                                        contrib/Makefile
-                                        check/Makefile])
+                                        contrib/Makefile])
+AX_CXX_COMPILE_STDCXX_OX
+CXXFLAGS='-std=gnu++0x'
 AC_OUTPUT
-
-
-
-
