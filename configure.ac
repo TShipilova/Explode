@@ -3,13 +3,27 @@ AC_INIT([exposive],[0.0],[illusion.of.life92@gmail.com])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE
-AC_PROG_CC_C_O
 AC_PROG_CXX
-AC_PROG_RANLIB
+AC_LANG([C++])
+AC_CHECK_LIB([m],[pow])
+AC_CHECK_LIB([SDL],[SDL_Init],[],
+        [AC_MSG_ERROR(You need the SDL development library.)])
+#Double square braces required because... required
+AC_COMPILE_IFELSE(
+        [AC_LANG_SOURCE( [ int main(){return [[]](){return 0;}();} ]) ], 
+        [] ,
+        [AC_MSG_WARN(Compiler do not support c++0x natively)])
+CXX="${CXX} -std=c++0x"
+AC_COMPILE_IFELSE(
+        [AC_LANG_SOURCE( [ int main(){return [[]](){return 0;}();} ]) ], [] ,
+        [AC_MSG_ERROR(Compiler do not support c++0x. Do something with it.)])
+
+
+AC_CHECK_HEADERS([SDL/SDL.h], [],
+    [AC_MSG_ERROR(You need the SDL development library.)])
 AC_CONFIG_FILES([Makefile
                                         src/Makefile
                                         doc/Makefile
                                         contrib/Makefile])
-AX_CXX_COMPILE_STDCXX_OX
-CXXFLAGS='-std=gnu++0x'
+
 AC_OUTPUT
