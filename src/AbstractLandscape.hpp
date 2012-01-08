@@ -3,7 +3,7 @@
 
 class AbstractWalker;
 class AbstractLandscapeAnimation;
-enum LandscapeAnimationState
+enum LandscapeState
 {
   Birth,
   Attention,
@@ -14,15 +14,16 @@ class AbstractLandscape
 {
 public:
   AbstractLandscape(int x, int y);
-  virtual int passAbilityRequirement () = 0 const;
+  virtual bool allowPass(AbstractWalker *) const;
   virtual bool blockExplosion () = 0 const;
-  virtual void exploded () = 0;
-  bool interruptAnimation () const;
-  LandscapeAnimationState animationState () const;
-  virtual void setAnimationState (LandscapeAnimationState newState);
-  virtual void passed (AbstractWalker *) = 0;
+  virtual void passEvent (AbstractWalker *) = 0;
+  virtual void timeEvent() =0;
+  virtual void explodeEvent () = 0;
+  LandscapeState animationState () const;
   virtual std::string name () = 0;
   virtual std::string description () = 0;
+protected:
+  void setAnimationState(LandscapeState);
 };
 
 #endif
