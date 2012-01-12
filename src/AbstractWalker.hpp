@@ -27,6 +27,9 @@ public:
   void setSpeed (int newSpeed);
   int factorSpeed (double factor);
   
+  virtual std::string name() = 0 const;
+  virtual std::string description() = 0 const;
+  
   virtual void applyAspect (AbstractTimedAspect *);
   virtual void applyAspect (AbstractDistanceAspect *);
   
