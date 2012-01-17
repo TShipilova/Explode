@@ -7,6 +7,7 @@ class AbstractCollisionBehavior
 public:
   virtual void collisionEvent(AbstractWalker *who, AbstractWalker *with);
 };
+
 template <typename Functional>
 class AnonymusCollisionBehavior : public AbstractCollisionBehavior
 {

@@ -1,4 +1,8 @@
 AC_PREREQ([2,68])
+#Includes
+m4_include([m4/ax_boost_base.m4])
+m4_include([m4/ax_boost_filesystem.m4])
+#-----------------
 AC_INIT([exposive],[0.0],[illusion.of.life92@gmail.com])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -21,6 +25,10 @@ AC_COMPILE_IFELSE(
 
 AC_CHECK_HEADERS([SDL/SDL.h], [],
     [AC_MSG_ERROR(You need the SDL development library.)])
+
+AX_BOOST_BASE([1.35], [], [AC_MSG_ERROR(Fail to find Boost library >=1.35)])
+AX_BOOST_FILESYSTEM
+
 AC_CONFIG_FILES([Makefile
                                         src/Makefile
                                         doc/Makefile
