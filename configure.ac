@@ -6,6 +6,7 @@ m4_include([m4/ax_boost_filesystem.m4])
 AC_INIT([exposive],[0.0],[illusion.of.life92@gmail.com])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([build-aux])
+
 AM_INIT_AUTOMAKE
 AC_PROG_CXX
 AC_LANG([C++])

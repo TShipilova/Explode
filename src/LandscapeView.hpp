@@ -2,6 +2,7 @@
 #define LANDSCAPEVIEW_HPP
 #include <config.h>
 #include <boost/shared_ptr.hpp>
+#include <complex>
 #include <SDL.h>
 
 class AbstractLandscape;
@@ -15,7 +16,7 @@ private:
 public:
   LandscapeView(AbstractLandscape *model);
   void timeEvent();
-  void render(SDL_Surface *surface, int x, int y, int size) const;
+  void render(SDL_Surface *surface, const std::complex<int> &pos, int size) const;
 };
 
 #endif

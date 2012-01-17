@@ -4,7 +4,7 @@
 
 namespace config
 {
-  
+  std::string datadir();
 };
 
 #endif
