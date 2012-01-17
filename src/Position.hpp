@@ -1,10 +1,6 @@
 #ifndef POSITION_HPP
 #define POSITION_HPP
-enum class AbsoluteMovementDirection
-{
-  North, South, West, East, Idle
-};
-using int = PassabilityLevel;
+
 class Position
 {
 public:

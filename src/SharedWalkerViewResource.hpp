@@ -6,7 +6,7 @@ class SharedWalkerViewResource
 {
 public:
   SharedWalkerViewResource(const std::string &);
-  void renderBirthAnimation(S)
+  void renderAnimation(SDL_Surface *surface, int frame, int siz);
 };
 
 #endif

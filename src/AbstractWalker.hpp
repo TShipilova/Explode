@@ -6,14 +6,7 @@ class AbstractBehavior;
 class AbstractTimedAspect;
 class AbstractDistanceAspect;
 class AbstractWalker;
-enum  WalkerState
-  {
-    Birth,
-    Movement,
-    Action,
-    Idle,
-    Death
-  };
+
 
 class AbstractWalker
 {
