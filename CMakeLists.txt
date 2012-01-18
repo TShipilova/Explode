@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 2.8)
+include_directories(include)
+include_directories(${Boost_INCLUDE_DIRS})
+enable_testing()
+add_subdirectory(include)
+add_subdirectory(core)
+add_subdirectory(doc)
+add_subdirectory(check)
