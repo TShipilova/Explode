@@ -51,6 +51,7 @@ public:
     void destructionSignal(const AbstractModelDestructionHandler &handler) const;
     virtual int birthTime() const =0;
     virtual int destructionTime() const =0;
+    void destroy();
 };
 
 #endif
