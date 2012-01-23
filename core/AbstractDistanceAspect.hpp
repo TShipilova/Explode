@@ -19,12 +19,15 @@
 
 #ifndef ABSTRACTDISTANCEASPECT_HPP
 #define ABSTRACTDISTANCEASPECT_HPP
-
+#include <string>
 class AbstractWalker;
 class AbstractDistanceAspect
 {
+public:
+  virtual std::string name() const =0;
   virtual void applyAspect (AbstractWalker*) = 0;
   virtual void recallAspect (AbstractWalker*, int distance) = 0;
+  virtual int remainedDistance() const =0;
 };
 
 #endif

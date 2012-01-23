@@ -32,33 +32,22 @@ class AbstractWalker : public AbstractModel
 {
 public:
     AbstractWalker();
-
     const Position& position () const;
     void moveTo (int x, int y);
-
     unsigned int speed () const;
     int factorSpeed (double factor); //Allow factor, but not sum speed to solve some order problems.
-
     void applyAspect (AbstractTimedAspect *);
     void applyAspect (AbstractDistanceAspect *);
-
     int passAblility ()  const;
     void setPassAbility (int);
-
     bool bombPassAblility () const;
     void setBombPassability ();
-
     global::AbsoluteMovementDirection movementDirection () const;
     void setMovementDirection (global::AbsoluteMovementDirection direction);
-
-    void moveByDecision();
-
     void collised(AbstractWalker *with);
-    
     void setMovementBehavior(AbstractMovementBehavior *);
     void setCollisionBehavior(AbstractCollisionBehavior *);
     virtual ~AbstractWalker();
-
 private:
     bool checkMovePossibility(global::AbsoluteMovementDirection direction); //Double check, in fact.
 };

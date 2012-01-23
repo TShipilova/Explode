@@ -14,7 +14,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 
 #ifndef ABSTRACTMODEL_HPP
@@ -22,36 +22,38 @@
 #include <string>
 #include <boost/function.hpp>
 class AbstractModel;
-typedef boost::function<void (AbstractModel *)> AbstractModelDestructionHandler;
+class GameMaze;
+typedef boost::function<void (AbstractModel *)>   AbstractModelDestructionHandler;
 enum  ModelState
 {
-    Birth,
-    Movement,
-    Action,
-    Slack,
-    Death
+  Birth,
+  Movement,
+  Action,
+  Slack,
+  Death
 };
 enum ModelType
 {
-    Landscape,
-    BackgroundObject,
-    Bomber,
-    Foe,
-    Unknown
+  Landscape,
+  BackgroundObject,
+  Bomber,
+  Foe,
+  Unknown
 };
 class AbstractModel
 {
 public:
-    virtual ModelType type() const =0;
-    virtual std::string name () const= 0;
-    virtual std::string description () const= 0;
-    virtual void timeEvent() const=0;
-    ModelState state() const;
-    void setState(ModelState st);
-    void destructionSignal(const AbstractModelDestructionHandler &handler) const;
-    virtual int birthTime() const =0;
-    virtual int destructionTime() const =0;
-    void destroy();
+  virtual ModelType type () const = 0;
+  virtual std::string name () const = 0;
+  virtual std::string description () const = 0;
+  virtual void timeEvent () const = 0;
+  ModelState state () const;
+  void setState (ModelState st);
+  void destructionSignal (const AbstractModelDestructionHandler &handler) const;
+  virtual int birthTime () const = 0;
+  virtual int destructionTime () const = 0;
+  void destroy ();
+  GameMaze *maze () const;
 };
 
 #endif

@@ -23,8 +23,11 @@
 class AbstractWalket;
 class AbstractTimedAspect
 {
+public:
+  virtual std::string name() const =0;
   virtual void applyAspect(AbstractWalker *)=0;
   virtual bool recallAspect(AbstractWalker *)=0; // return true on and only on last call.
+  virtual int remainedTime() = 0;
 };
 
 #endif

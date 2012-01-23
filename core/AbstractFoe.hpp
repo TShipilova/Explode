@@ -20,12 +20,11 @@
 #ifndef ABSTRACTFOE_H
 #define ABSTRACTFOE_H
 
-#include <../../home/illusionoflife/Explode/core/AbstractWalker.hpp>
-
+#include "AbstractWalker.hpp"
 
 class AbstractFoe : public AbstractWalker
 {
-    
+      void moveByDecision();
 };
 
 #endif // ABSTRACTFOE_H

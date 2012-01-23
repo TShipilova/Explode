@@ -27,11 +27,10 @@ class AbstractWalker;
 class GameMaze
 {
 public:
-  static void reinitializeMaze(...);
-  static GameMaze *instance();
+  void reinitializeMaze(...);
   AbstractLandscape* landscapeAt(int x, int y);
   void timeEvent();
-  static void timeEvent(const std::vector<GameEvent> &);
+  void timeEvent(const std::vector<GameEvent> &);
   
 };
 
