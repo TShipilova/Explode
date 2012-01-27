@@ -19,12 +19,12 @@
 
 #ifndef GLOBAL_HPP
 #define GLOBAL_HPP
-
+#include <fstream>
 namespace global
 {
 enum  AbsoluteMovementDirection
 {
-North, South, West, East, Idle
+  North, South, West, East, Idle
 };
 enum  ModelState
 {
@@ -34,6 +34,7 @@ enum  ModelState
   Slack,
   Death
 };
+
 };
 
 #endif

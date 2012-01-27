@@ -23,7 +23,7 @@
 #include <boost/function.hpp>
 class AbstractModel;
 class GameMaze;
-typedef boost::function<void (AbstractModel *)>   AbstractModelDestructionHandler;
+typedef boost::function<void (AbstractModel *)>   AbstractModelEventHandler;
 enum  ModelState
 {
   Birth,
@@ -49,11 +49,12 @@ public:
   virtual void timeEvent () const = 0;
   ModelState state () const;
   void setState (ModelState st);
-  void destructionSignal (const AbstractModelDestructionHandler &handler) const;
+  void destructionSignal (const AbstractModelEventHandler &handler) const;
   virtual int birthTime () const = 0;
   virtual int destructionTime () const = 0;
   void destroy ();
   GameMaze *maze () const;
+  void setParentMaze(const GameMaze *);
 };
 
 #endif

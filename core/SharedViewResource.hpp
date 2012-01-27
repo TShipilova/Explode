@@ -23,6 +23,7 @@
 #include <string>
 #include <complex>
 #include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include "AbstractModel.hpp"
 
 class SharedViewResource

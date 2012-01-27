@@ -17,15 +17,30 @@
 */
 
 
-#ifndef SHAREDWALKERVIEWRESOURCE_HPP
-#define SHAREDWALKERVIEWRESOURCE_HPP
-#include <string>
+#ifndef LANDSCAPEVIEW_HPP
+#define LANDSCAPEVIEW_HPP
+#include <boost/shared_ptr.hpp>
+#include <complex>
 #include <SDL/SDL.h>
-class SharedWalkerViewResource
+
+class AbstractModel;
+struct GraphicalUnit
 {
+  SDL_Surface *surface;
+  std::complex<int> pos;
+  int size;
+};
+class ModelView
+{
+private:
+    int m_animation_index;
+    AbstractModel *m_model;
 public:
-  SharedWalkerViewResource(const std::string &);
-  void renderAnimation(SDL_Surface *surface, int frame, int siz);
+    static const int IMAGE_SIZE = 64;
+    static const int IMAGE_FRAMES = 16;
+    ModelView(AbstractModel *model);
+    void timeEvent();
+    void render(const GraphicalUnit &unit) const;
 };
 
 #endif

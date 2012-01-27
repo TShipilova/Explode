@@ -21,17 +21,26 @@
 #define GAMEMAZE_HPP
 #include <vector>
 #include "GameEvent.hpp"
-
+#include "AbstractLandscape.hpp"
+#include "AbstractBackgroundObject.hpp"
+#include <boost/function.hpp>
+#include <boost/signal.hpp>
 class AbstractLandscape;
 class AbstractWalker;
+class GameField;
+class AbstractModel;
+typedef boost::function<void (const AbstractModel *)> ConstantAbstractEventHandler;
 class GameMaze
 {
 public:
-  void reinitializeMaze(...);
+  GameMaze(...);
+  //! Is really needed? */
   AbstractLandscape* landscapeAt(int x, int y);
   void timeEvent();
   void timeEvent(const std::vector<GameEvent> &);
-  
+  void modelCreatedSignal(const ConstantAbstractEventHandler &);
+  void modelDestroySignal(const ConstantAbstractEventHandler &);
+  void backgroundObjectCreationRequest(const BackgroundObjectGenerator &);
 };
 
 #endif

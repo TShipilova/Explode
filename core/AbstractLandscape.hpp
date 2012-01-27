@@ -3,12 +3,13 @@
 #include "global.hpp"
 #include "AbstractBackgroundObject.hpp"
 class AbstractLandscape;
-typedef boost::function<AbstractLandscape *()> LandscapeGenerator;
-    typedef boost::function<void (AbstractLandscape *)> LandscrapeDestructionHandler;
+class GmaeMaze;
+typedef boost::function<AbstractLandscape *(GameMaze *)> LandscapeGenerator;
+typedef boost::function<void (AbstractLandscape *)> LandscrapeDestructionHandler;
 class AbstractLandscape: public AbstractBackgroundObject
 {
     public:
-        static AbstractLandscape* create();
+        static AbstractLandscape* create(GameMaze *);
         LandscapeGenerator replacement() const;
         void setReplacement(const LandscapeGenerator& gen);
         void destructionSignal(const LandscrapeDestructionHandler &handler);

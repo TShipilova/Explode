@@ -19,18 +19,20 @@
 
 #ifndef ABSTRACTBACKGROUNDOBJECT_H
 #define ABSTRACTBACKGROUNDOBJECT_H
-
+#include <boost/function.hpp>
 #include "AbstractModel.hpp"
-
+typedef boost::function<AbstractBackgroundObject *(GameMaze *)> BackgroundObjectGenerator;
+class GameMaze;
 class AbstractWalker;
-class AbstractBackgroundObject : public AbstractModel
+class AbstractBackgroundObject 
+  : public AbstractModel
 {
 public:
     virtual bool allowPass ( AbstractWalker * ) const;
     virtual bool blockExplosion () const =0;
     virtual void passEvent ( AbstractWalker * ) = 0;
     virtual void explodeEvent () = 0;
-    static AbstractBackgroundObject *create();
+    static AbstractBackgroundObject *create(GameMaze *);
 };
 
 #endif // ABSTRACTBACKGROUNDOBJECT_H

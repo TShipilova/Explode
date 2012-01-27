@@ -19,21 +19,26 @@
 
 #ifndef ABSTRACTWALKER_HPP
 #define ABSTRACTWALKER_HPP
+
+#include <boost/function.hpp>
 #include "global.hpp"
 #include "AbstractModel.hpp"
+
 class Position;
 class AbstractBehavior;
 class AbstractTimedAspect;
 class AbstractDistanceAspect;
 class AbstractMovementBehavior;
 class AbstractCollisionBehavior;
-
+typedef boost::function<bool (const AbstractWalker *, const std::complex<int> &pos)> PassabilityChecker;
+typedef boost::function<void (AbstractWalker *)> PassHandler;
 class AbstractWalker : public AbstractModel
 {
 public:
     AbstractWalker();
     const Position& position () const;
     void moveTo (int x, int y);
+    void moveTo (const std::complex<int> &pos);
     unsigned int speed () const;
     int factorSpeed (double factor); //Allow factor, but not sum speed to solve some order problems.
     void applyAspect (AbstractTimedAspect *);
@@ -47,6 +52,8 @@ public:
     void collised(AbstractWalker *with);
     void setMovementBehavior(AbstractMovementBehavior *);
     void setCollisionBehavior(AbstractCollisionBehavior *);
+    void passedSignal(const PassHandler &handler);
+    void passabilityCheckerSignal(const PassabilityChecker &checker);
     virtual ~AbstractWalker();
 private:
     bool checkMovePossibility(global::AbsoluteMovementDirection direction); //Double check, in fact.
