@@ -23,15 +23,7 @@
 #include <boost/function.hpp>
 #include "global.hpp"
 #include "AbstractModel.hpp"
-
-class Position;
-class AbstractBehavior;
-class AbstractTimedAspect;
-class AbstractDistanceAspect;
-class AbstractMovementBehavior;
-class AbstractCollisionBehavior;
-typedef boost::function<bool (const AbstractWalker *, const std::complex<int> &pos)> PassabilityChecker;
-typedef boost::function<void (AbstractWalker *)> PassHandler;
+#include "Typedefs.hpp"
 class AbstractWalker : public AbstractModel
 {
 public:
@@ -43,6 +35,7 @@ public:
     int factorSpeed (double factor); //Allow factor, but not sum speed to solve some order problems.
     void applyAspect (AbstractTimedAspect *);
     void applyAspect (AbstractDistanceAspect *);
+    void applyAspect(AbstractPermanentAspect *);
     int passAblility ()  const;
     void setPassAbility (int);
     bool bombPassAblility () const;

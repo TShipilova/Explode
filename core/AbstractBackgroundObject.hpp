@@ -21,7 +21,6 @@
 #define ABSTRACTBACKGROUNDOBJECT_H
 #include <boost/function.hpp>
 #include "AbstractModel.hpp"
-typedef boost::function<AbstractBackgroundObject *(GameMaze *)> BackgroundObjectGenerator;
 class GameMaze;
 class AbstractWalker;
 class AbstractBackgroundObject 

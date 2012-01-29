@@ -1,6 +1,6 @@
 find_package(SDL REQUIRED)
 #set(coresource)
 #add_library(core STATIC ${coresource})
-add_executable(explode AbstractFoe.cpp Bomber.cpp AbstractBackgroundObject.cpp main.cpp)
+add_executable(explode Application.cpp GameMazeView.cpp AbstractFoe.cpp Bomber.cpp AbstractBackgroundObject.cpp main.cpp)
 target_link_libraries(explode ${external_libs})
 #target_link_libraries(explode core)

@@ -21,11 +21,13 @@
 #define BOMBER_H
 
 #include "AbstractWalker.hpp"
+#include "Typedefs.hpp"
 
-
-class Bomber : public AbstractWalker
+class Bomber : 
+    public AbstractWalker
 {
 public:
+     Bomber();
      int carryAbility () const;
     void setCarryAbility (int);
     
@@ -37,6 +39,10 @@ public:
     
     int bombTimeout ();
     void setBombTimeout (int);
+    bool distantBombControlAbility() const;
+    void setDistantBombControlAbility(bool);
+    
+    void distantBombExplodeRequestSignal(const DistantExplodeRequestHandler &handler) const;
     
     bool putBomb () const;
     

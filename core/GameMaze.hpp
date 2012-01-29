@@ -21,15 +21,10 @@
 #define GAMEMAZE_HPP
 #include <vector>
 #include "GameEvent.hpp"
-#include "AbstractLandscape.hpp"
-#include "AbstractBackgroundObject.hpp"
 #include <boost/function.hpp>
 #include <boost/signal.hpp>
-class AbstractLandscape;
-class AbstractWalker;
-class GameField;
-class AbstractModel;
-typedef boost::function<void (const AbstractModel *)> ConstantAbstractEventHandler;
+#include "Typedefs.hpp"
+class Bomber;
 class GameMaze
 {
 public:
@@ -40,7 +35,10 @@ public:
   void timeEvent(const std::vector<GameEvent> &);
   void modelCreatedSignal(const ConstantAbstractEventHandler &);
   void modelDestroySignal(const ConstantAbstractEventHandler &);
-  void backgroundObjectCreationRequest(const BackgroundObjectGenerator &);
+  void backgroundObjectCreationRequest(const BackgroundObjectGenerator &gen, const std::complex<int> &pos);
+  void foeCreationRequest(const FoeGenerator &gen, const std::complex<int> &pos);
+  void putBomber(Bomber *unit, const std::complex<int> &pos);
+  void distantBombExplodeRequest(Bomber *);
 };
 
 #endif

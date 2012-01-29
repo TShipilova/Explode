@@ -11,11 +11,9 @@
 #include "GameEvent.hpp"
 #include "GameMaze.hpp"
 #include "global.hpp"
-#include "LandscapeView.hpp"
 #include "Position.hpp"
 #include "ResourceManager.hpp"
 #include "SharedViewResource.hpp"
-#include "SharedWalkerViewResource.hpp"
 int main ( int argc, char **argv )
 {
     SDL_Init ( SDL_INIT_EVERYTHING );
@@ -38,8 +36,6 @@ int main ( int argc, char **argv )
 #include "GameEvent.hpp"
 #include "GameMaze.hpp"
 #include "global.hpp"
-#include "LandscapeView.hpp"
 #include "Position.hpp"
 #include "ResourceManager.hpp"
 #include "SharedViewResource.hpp"
-#include "SharedWalkerViewResource.hpp"

@@ -25,6 +25,7 @@
 class AbstractFoe : public AbstractWalker
 {
       void moveByDecision();
+       static AbstractFoe *create(GameMaze*);
 };
 
 #endif // ABSTRACTFOE_H

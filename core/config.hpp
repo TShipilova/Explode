@@ -19,10 +19,17 @@
 
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
-
-namespace config
+#include <complex>
+namespace constConfig
 {
-  std::string datadir();
+    std::string datadir();
+};
+class Config
+{
+public:
+    std::complex<int> currentResolution() const;
+    bool setCurrentResolution(const std::complex<int> &);
+    int fieldSize() const;
 };
 
 #endif
