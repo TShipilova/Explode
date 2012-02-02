@@ -14,22 +14,25 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 #include <complex>
-namespace constConfig
+namespace constconf
 {
-    std::string datadir();
+std::string datadir ();
 };
 class Config
 {
 public:
-    std::complex<int> currentResolution() const;
-    bool setCurrentResolution(const std::complex<int> &);
-    int fieldSize() const;
+  static std::complex<int> currentResolution ();
+  static bool setCurrentResolution (const std::complex<int> &);
+  static int fieldSize ();
+  static int progressFactor ();
+  static void setProgressFactor (float frameDuration);
+  static void setProgressFactor (int rawFactor);
 };
 
 #endif
