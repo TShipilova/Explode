@@ -46,7 +46,7 @@ public:
     
     bool putBomb () const;
     
-    void moveByOrder (global::AbsoluteMovementDirection direction);
+    void moveByOrder (AbsoluteMovementDirection direction);
 };
 
 #endif // BOMBER_H

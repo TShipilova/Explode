@@ -1,4 +1,5 @@
 #include <SDL/SDL.h>
+#include "Typedefs.hpp"
 #include "AbstractCollisionBehavior.hpp"
 #include "AbstractDistanceAspect.hpp"
 #include "AbstractLandscape.hpp"
@@ -10,7 +11,7 @@
 #include "DefaultBehavior.hpp"
 #include "GameEvent.hpp"
 #include "GameMaze.hpp"
-#include "global.hpp"
+
 #include "Position.hpp"
 #include "ResourceManager.hpp"
 #include "SharedViewResource.hpp"
@@ -35,7 +36,6 @@ int main ( int argc, char **argv )
 #include "DefaultBehavior.hpp"
 #include "GameEvent.hpp"
 #include "GameMaze.hpp"
-#include "global.hpp"
 #include "Position.hpp"
 #include "ResourceManager.hpp"
 #include "SharedViewResource.hpp"

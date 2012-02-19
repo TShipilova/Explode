@@ -19,13 +19,14 @@
 
 #ifndef ABSTRACTBEHAVIOR_HPP
 #define ABSTRACTBEHAVIOR_HPP
+#include "Typedefs.hpp"
 #include "Position.hpp"
 
 class AbstractWalker;
 class AbstractMovementBehavior
 {
 public:
-virtual global::AbsoluteMovementDirection makeDecision (AbstractWalker *);
+virtual AbsoluteMovementDirection makeDecision (AbstractWalker *);
 };
 
 template <typename Functional>
@@ -38,7 +39,7 @@ public:
   : m_func(func)
 {
 }
-virtual global::AbsoluteMovementDirection makeDecision(AbstractWalker *walker)
+virtual AbsoluteMovementDirection makeDecision(AbstractWalker *walker)
 {
   return m_func(walker);
 }

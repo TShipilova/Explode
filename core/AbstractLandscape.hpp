@@ -1,6 +1,5 @@
 #ifndef ABSTRACTLANDSCAPE_HPP
 #define ABSTRACTLANDSCAPE_HPP
-#include "global.hpp"
 #include "AbstractBackgroundObject.hpp"
 class AbstractLandscape;
 class GmaeMaze;

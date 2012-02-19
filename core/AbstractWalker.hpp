@@ -19,11 +19,9 @@
 
 #ifndef ABSTRACTWALKER_HPP
 #define ABSTRACTWALKER_HPP
-
-#include <boost/function.hpp>
-#include "global.hpp"
-#include "AbstractModel.hpp"
 #include "Typedefs.hpp"
+#include "AbstractModel.hpp"
+
 class AbstractWalker : public AbstractModel
 {
 public:
@@ -40,8 +38,8 @@ public:
     void setPassAbility (int);
     bool bombPassAblility () const;
     void setBombPassability ();
-    global::AbsoluteMovementDirection movementDirection () const;
-    void setMovementDirection (global::AbsoluteMovementDirection direction);
+   AbsoluteMovementDirection movementDirection () const;
+    void setMovementDirection (AbsoluteMovementDirection direction);
     void collised(AbstractWalker *with);
     void setMovementBehavior(AbstractMovementBehavior *);
     void setCollisionBehavior(AbstractCollisionBehavior *);
@@ -49,7 +47,7 @@ public:
     void passabilityCheckerSignal(const PassabilityChecker &checker);
     virtual ~AbstractWalker();
 private:
-    bool checkMovePossibility(global::AbsoluteMovementDirection direction); //Double check, in fact.
+    bool checkMovePossibility(AbsoluteMovementDirection direction); //Double check, in fact.
 };
 
 

@@ -55,6 +55,7 @@ public:
   void destroy ();
   GameMaze *maze () const;
   void setParentMaze(const GameMaze *);
+  virtual ~AbstractModel(){};
 };
 
 #endif

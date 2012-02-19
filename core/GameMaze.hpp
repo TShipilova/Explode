@@ -20,13 +20,9 @@
 #ifndef GAMEMAZE_HPP
 #define GAMEMAZE_HPP
 #include <vector>
-#include "GameEvent.hpp"
-#include <boost/function.hpp>
-#include <boost/signal.hpp>
 #include "Typedefs.hpp"
-class Bomber;
 class GameMaze
-{
+{ Bomber *value;
 public:
   GameMaze(...);
   //! Is really needed? */

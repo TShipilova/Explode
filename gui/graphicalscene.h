@@ -1,6 +1,6 @@
 /*
     <one line to give the program's name and a brief idea of what it does.>
-    Copyright (C) 2012  ilusionoflife <illusion.of.life92@gmail.com>
+    Copyright (C) <year>  <name of author>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,18 +14,27 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 */
 
-
-#include "Application.hpp"
-
-Application::Application()
+#ifndef GRAPHICALSCENE_H
+#define GRAPHICALSCENE_H
+#include <stack>
+#include <SFML/Graphics.hpp>
+class sf::RenderWindow;
+class GraphicalScene;
+class GraphicalSceneStack
 {
+public:
+    //! Takes ownership of window.
+    GraphicalSceneStack(sf::RenderWindow *window);
+    //! Take ownership of Scenes.
+    void pushScene(GraphicalScene *);
+    void popScene();
+    void popSceneTo(GraphicalScene *);
+    void exec();
+private:
+    std::vector<GraphicalScene*> m_scene_stack;
+};
 
-}
-
-Application::~Application()
-{
-
-}
-
+#endif // GRAPHICALSCENE_H

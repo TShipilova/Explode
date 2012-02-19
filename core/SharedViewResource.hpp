@@ -22,8 +22,7 @@
 
 #include <string>
 #include <complex>
-#include <SDL/SDL.h>
-#include <SDL/SDL_image.h>
+#include "Typedefs.hpp"
 #include "AbstractModel.hpp"
 
 class SharedViewResource
@@ -33,7 +32,7 @@ public:
   template <ModelState>
   void renderAnimation(SDL_Surface *surface, const std::complex<int> &pos, int frame);
   void renderAnimation(SDL_Surface *surface, const std::complex<int> &pos, int frame, 
-                       global::AbsoluteMovementDirection dir);
+                       AbsoluteMovementDirection dir);
   };
 
 #endif
