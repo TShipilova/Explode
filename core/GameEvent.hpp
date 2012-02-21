@@ -19,7 +19,7 @@
 
 #ifndef GAMEEVENT_HPP
 #define GAMEEVENT_HPP
-#include "Typedefs.hpp"
+
 #include "Position.hpp"
 
 struct GameEvent

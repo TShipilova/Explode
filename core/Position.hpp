@@ -20,6 +20,7 @@
 #ifndef POSITION_HPP
 #define POSITION_HPP
 #include <complex>
+enum AbsoluteMovementDirection{ North, South, West, East, NoMovement};
 class Position
 {
 public:

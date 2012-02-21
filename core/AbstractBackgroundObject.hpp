@@ -27,6 +27,7 @@ class AbstractBackgroundObject
   : public AbstractModel
 {
 public:
+	typedef boost::function<AbstractBackgroundObject *(GameMaze *)> Generator;
     virtual bool allowPass ( AbstractWalker * ) const;
     virtual bool blockExplosion () const =0;
     virtual void passEvent ( AbstractWalker * ) = 0;

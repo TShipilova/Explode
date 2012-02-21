@@ -22,4 +22,4 @@ extern
 *.info
 latex
 html
-*.d
+*.d.kdev_include_paths

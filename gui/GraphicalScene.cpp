@@ -17,5 +17,5 @@
 
 */
 
-#include "graphicalscene.h"
+#include "GraphicalScene.hpp"
 

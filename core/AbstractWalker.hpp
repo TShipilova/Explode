@@ -14,40 +14,48 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 
 #ifndef ABSTRACTWALKER_HPP
 #define ABSTRACTWALKER_HPP
-#include "Typedefs.hpp"
+#include <complex>
 #include "AbstractModel.hpp"
+#include "Position.hpp"
+
+class AbstractTimedAspect;
+class AbstractDistanceAspect;
+class AbstractPermanentAspect;
+class AbstractCollisionBehavior;
+class AbstractWalker;
 
 class AbstractWalker : public AbstractModel
 {
 public:
-    AbstractWalker();
-    const Position& position () const;
-    void moveTo (int x, int y);
-    void moveTo (const std::complex<int> &pos);
-    unsigned int speed () const;
-    int factorSpeed (double factor); //Allow factor, but not sum speed to solve some order problems.
-    void applyAspect (AbstractTimedAspect *);
-    void applyAspect (AbstractDistanceAspect *);
-    void applyAspect(AbstractPermanentAspect *);
-    int passAblility ()  const;
-    void setPassAbility (int);
-    bool bombPassAblility () const;
-    void setBombPassability ();
-   AbsoluteMovementDirection movementDirection () const;
-    void setMovementDirection (AbsoluteMovementDirection direction);
-    void collised(AbstractWalker *with);
-    void setMovementBehavior(AbstractMovementBehavior *);
-    void setCollisionBehavior(AbstractCollisionBehavior *);
-    void passedSignal(const PassHandler &handler);
-    void passabilityCheckerSignal(const PassabilityChecker &checker);
-    virtual ~AbstractWalker();
+typedef boost::function<void (AbstractWalker *)> PassHandler;
+typedef boost::function<bool (const AbstractWalker *, const std::complex<int> &pos)> PassabilityChecker;
+AbstractWalker();
+const Position& position () const;
+void moveTo (int x, int y);
+void moveTo (const std::complex<int> &pos);
+unsigned int speed () const;
+int factorSpeed (double factor);     //Allow factor, but not sum speed to solve some orderind problems.
+void applyAspect (AbstractTimedAspect *);
+void applyAspect (AbstractDistanceAspect *);
+void applyAspect (AbstractPermanentAspect *);
+int passAblility ()  const;
+void setPassAbility (int);
+bool bombPassAblility () const;
+void setBombPassability ();
+AbsoluteMovementDirection movementDirection () const;
+void collised (AbstractWalker *with);
+void setCollisionBehavior (AbstractCollisionBehavior *);
+void passedSignal (const PassHandler &handler);
+void passabilityCheckerSignal (const PassabilityChecker &checker);
+virtual ~AbstractWalker();
 private:
-    bool checkMovePossibility(AbsoluteMovementDirection direction); //Double check, in fact.
+void setMovementDirection (AbsoluteMovementDirection direction);
+bool checkMovePossibility (AbsoluteMovementDirection direction);    //Double check, in fact.
 };
 
 

@@ -22,17 +22,16 @@
 
 #include <string>
 #include <complex>
-#include "Typedefs.hpp"
 #include "AbstractModel.hpp"
 
 class SharedViewResource
 {
 public:
-  SharedViewResource(const std::string &name);
+  /*SharedViewResource(const std::string &name);
   template <ModelState>
   void renderAnimation(SDL_Surface *surface, const std::complex<int> &pos, int frame);
   void renderAnimation(SDL_Surface *surface, const std::complex<int> &pos, int frame, 
-                       AbsoluteMovementDirection dir);
+                       AbsoluteMovementDirection dir); */
   };
 
 #endif

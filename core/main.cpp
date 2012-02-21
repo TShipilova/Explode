@@ -1,5 +1,4 @@
 #include <SDL/SDL.h>
-#include "Typedefs.hpp"
 #include "AbstractCollisionBehavior.hpp"
 #include "AbstractDistanceAspect.hpp"
 #include "AbstractLandscape.hpp"

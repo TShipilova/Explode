@@ -20,21 +20,26 @@
 #ifndef GAMEMAZE_HPP
 #define GAMEMAZE_HPP
 #include <vector>
-#include "Typedefs.hpp"
+#include "AbstractModel.hpp"
+#include "AbstractBackgroundObject.hpp"
+#include "AbstractFoe.hpp"
+#include "GameEvent.hpp"
+#include "Bomber.hpp"
+class AbstractLandscape;
 class GameMaze
-{ Bomber *value;
+{
 public:
   GameMaze(...);
   //! Is really needed? */
   AbstractLandscape* landscapeAt(int x, int y);
   void timeEvent();
   void timeEvent(const std::vector<GameEvent> &);
-  void modelCreatedSignal(const ConstantAbstractEventHandler &);
-  void modelDestroySignal(const ConstantAbstractEventHandler &);
-  void backgroundObjectCreationRequest(const BackgroundObjectGenerator &gen, const std::complex<int> &pos);
-  void foeCreationRequest(const FoeGenerator &gen, const std::complex<int> &pos);
-  void putBomber(Bomber *unit, const std::complex<int> &pos);
-  void distantBombExplodeRequest(Bomber *);
+  void modelCreatedSignal(const AbstractModel::ConstEventHandler &);
+  void modelDestroySignal(const AbstractModel::ConstEventHandler &);
+  void backgroundObjectCreationRequest(const AbstractBackgroundObject::Generator &gen, const std::complex<int> &pos);
+  void foeCreationRequest(const AbstractFoe::Generator &gen, const std::complex<int> &pos);
+  void putBomber(class Bomber *unit, const std::complex<int> &pos);
+  void distantBombExplodeRequest(class Bomber *);
 };
 
 #endif

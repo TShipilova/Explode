@@ -19,9 +19,11 @@
 
 #ifndef GRAPHICALSCENE_H
 #define GRAPHICALSCENE_H
-#include <stack>
-#include <SFML/Graphics.hpp>
-class sf::RenderWindow;
+#include <vector>
+namespace sf {
+class RenderWindow;
+class Event;
+};
 class GraphicalScene;
 class GraphicalSceneStack
 {
@@ -32,6 +34,8 @@ public:
     void pushScene(GraphicalScene *);
     void popScene();
     void popSceneTo(GraphicalScene *);
+	sf::RenderWindow *renderWindow() const;
+	void processEvent(const sf::Event &);
     void exec();
 private:
     std::vector<GraphicalScene*> m_scene_stack;

@@ -19,7 +19,6 @@
 
 #ifndef ABSTRACTBEHAVIOR_HPP
 #define ABSTRACTBEHAVIOR_HPP
-#include "Typedefs.hpp"
 #include "Position.hpp"
 
 class AbstractWalker;

@@ -14,18 +14,21 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 
 #ifndef ABSTRACTFOE_H
 #define ABSTRACTFOE_H
 
 #include "AbstractWalker.hpp"
-
+class AbstractMovementBehavior;
 class AbstractFoe : public AbstractWalker
 {
-      void moveByDecision();
-       static AbstractFoe *create(GameMaze*);
+public:
+typedef boost::function<AbstractFoe *(GameMaze *)> Generator;
+static AbstractFoe *create (GameMaze*);
+void moveByDecision ();
+void setMovementBehavior (AbstractMovementBehavior *);
 };
 
 #endif // ABSTRACTFOE_H
