@@ -17,28 +17,33 @@
 
 */
 
-#ifndef GRAPHICALSCENE_H
-#define GRAPHICALSCENE_H
+#ifndef GRAPHICALSCENESTACK_H
+#define GRAPHICALSCENESTACK_H
 #include <vector>
 namespace sf {
-class RenderWindow;
-class Event;
-};
+  class RenderWindow;
+  struct Event;
+}
 class GraphicalScene;
 class GraphicalSceneStack
 {
 public:
-    //! Takes ownership of window.
-    GraphicalSceneStack(sf::RenderWindow *window);
-    //! Take ownership of Scenes.
-    void pushScene(GraphicalScene *);
-    void popScene();
-    void popSceneTo(GraphicalScene *);
-	sf::RenderWindow *renderWindow() const;
-	void processEvent(const sf::Event &);
-    void exec();
+  //! Takes ownership of window.
+  GraphicalSceneStack(sf::RenderWindow *window);
+  //! Take ownership of Scenes.
+  void pushScene(GraphicalScene *);
+  void popScene();
+  void popSceneTo(const GraphicalScene *);
+  void updateFrame();
+  sf::RenderWindow *renderWindow() const;
+  void processEvent(const sf::Event &);
+  void exec();
+  ~GraphicalSceneStack();
 private:
-    std::vector<GraphicalScene*> m_scene_stack;
+  template<typename ...Args>
+  void chainEvent(bool (GraphicalScene::*method)(Args...), Args... arg);
+  std::vector<GraphicalScene*> m_scene_stack;
+  sf::RenderWindow *m_window;
 };
-
+#include "GraphicalSceneStack.cpp"
 #endif // GRAPHICALSCENE_H

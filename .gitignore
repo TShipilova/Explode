@@ -23,3 +23,7 @@ extern
 latex
 html
 *.d.kdev_include_paths
+GPATH
+GRTAGS
+GSYMS
+GTAGS

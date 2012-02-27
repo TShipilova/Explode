@@ -16,22 +16,38 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-
 #ifndef GRAPHICALSCENE_H
 #define GRAPHICALSCENE_H
 namespace sf{
-class Event;
+struct KeyEvent;
+struct MouseMoveEvent;
+struct MouseButtonEvent;
+struct MouseWheelEvent;
+struct SizeEvent;
 class RenderWindow;
-}
+};
 class GraphicalSceneStack;
+class GraphicalWidget;
 class GraphicalScene
 {
-	public:
-		GraphicalSceneStack *masterStack() const;
-		sf::RenderWindow * renderWindow() const;
-		virtual bool processEvent(const sf::Event &) =0;
-		virtual bool updateFrame();
-		virtual ~GraphicalScene();
+public:
+  GraphicalSceneStack *masterStack() const;
+  sf::RenderWindow * renderWindow() const;
+  virtual bool keyPressEvent(const sf::KeyEvent &);
+  virtual bool keyReleaseEvent(const sf::KeyEvent &);
+  virtual bool mouseMoveEvent(const sf::MouseMoveEvent &);
+  virtual bool mouseEnterEvent(const sf::MouseMoveEvent &);
+  virtual bool mouseLeaveEvent(const sf::MouseMoveEvent &);
+  virtual bool mousePressEvent(const sf::MouseButtonEvent &);
+  virtual bool mouseReleaseEvent(const sf::MouseButtonEvent &);
+  virtual bool mouseWheelEvent(const sf::MouseWheelEvent &);
+  virtual bool resizeEvent(const sf::SizeEvent &);
+  virtual bool focusLoseEvent();
+  virtual bool focusGainEvent();
+  bool closeEvent();
+  virtual bool updateFrame();
+  virtual void free();
+  virtual ~GraphicalScene();
 };
 
 #endif // GRAPHICALSCENE_H
