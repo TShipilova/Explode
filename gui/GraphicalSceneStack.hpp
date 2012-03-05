@@ -41,7 +41,7 @@ public:
   ~GraphicalSceneStack();
 private:
   template<typename ...Args>
-  void chainEvent(bool (GraphicalScene::*method)(Args...), Args... arg);
+  void chainEvent(bool (GraphicalScene::*method)(const Args &...), const Args &... arg);
   std::vector<GraphicalScene*> m_scene_stack;
   sf::RenderWindow *m_window;
 };

@@ -25,57 +25,83 @@
 
 
 GraphicalSceneStack::GraphicalSceneStack(sf::RenderWindow* window)
-  : m_window(window)
+        : m_window(window)
 {
+
 }
 GraphicalSceneStack::~GraphicalSceneStack()
 {
-  delete m_window;
+    delete m_window;
 }
 sf::RenderWindow* GraphicalSceneStack::renderWindow() const
 {
-  return m_window;
+    return m_window;
 }
 void GraphicalSceneStack::pushScene(GraphicalScene *scene)
 {
-  m_scene_stack.push_back(scene);
+    m_scene_stack.push_back(scene);
 }
 void GraphicalSceneStack::popScene()
 {
-  assert(!m_scene_stack.empty());
-  m_scene_stack.back()->free();
-  m_scene_stack.pop_back();
+    assert(!m_scene_stack.empty());
+    m_scene_stack.back()->free();
+    m_scene_stack.pop_back();
 }
 void GraphicalSceneStack::popSceneTo(const GraphicalScene *scene)
 {
-  assert(scene);
-  while (!m_scene_stack.empty())
-    if (scene != m_scene_stack.back())
-      popScene();
-  assert(!m_scene_stack.empty());
+    assert(scene);
+    while (!m_scene_stack.empty())
+        if (scene != m_scene_stack.back())
+            popScene();
+    assert(!m_scene_stack.empty());
 }
 
 void GraphicalSceneStack::processEvent(const sf::Event & event)
 {
-	//chainEvent();
-	switch (event.Type) 
-	{
-		case sf::Event::Closed: 
-			this->chainEvent(&GraphicalScene::closeEvent);
-			break;
-		default:
-			break;
-  }
+    //chainEvent();
+    switch (event.Type)
+    {
+    case sf::Event::Closed:
+        this->chainEvent(&GraphicalScene::closeEvent);
+        break;
+    case sf::Event::KeyPressed:
+        this->chainEvent(&GraphicalScene::keyPressEvent, event.Key);
+        break;
+    case sf::Event::KeyReleased:
+        this->chainEvent(&GraphicalScene::keyPressEvent, event.Key);
+        break;
+    default:
+        break;
+    }
 }
 
 //! Well, it is kind of tradeoff. Either I pull C++0x requirement(not so much deal, as development will take a while)
-//! and eliminate code duplicate, but without using std::algorithm. Or I could split it for different count of args, 
-//!	use boost::lambda, get code duplicate and stay in C++03. 
+//! and eliminate code duplicate, but without using std::algorithm. Or I could split it for different count of args,
+//!	use boost::lambda, get code duplicate and stay in C++03.
 //!	Well, when C++0x lambdas will work with vardaic args, it will be even more elegant.
 template <typename ...Args>
-void  GraphicalSceneStack::chainEvent(bool (GraphicalScene::*method)(Args...), Args ...args)
+void  GraphicalSceneStack::chainEvent(bool (GraphicalScene::*method)(const Args &... ), const Args &...args)
 {
-	using namespace boost::lambda;
-	find_if(m_scene_stack.rbegin(), m_scene_stack.rend(), 
-			(_1->*method)(args...) ); 
+    //It is really black magic. Fear the dark!
+    auto scene_iterator = m_scene_stack.rbegin();
+    while (scene_iterator != m_scene_stack.rend())
+    {
+        if ( ((*scene_iterator)->*method)(args ...))
+            break;
+        scene_iterator++;
+    }
+}
+
+void GraphicalSceneStack::exec()
+{
+   
+    while (m_window->isOpen())
+    {
+		 sf::Event event;
+		while (window->PollEvent(event))
+			this->processEvent(event);
+    }
+    m_window->Clear();
+	updateFrame();
+	m_window->Display();
 }
